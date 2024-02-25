@@ -1,0 +1,112 @@
+@import "bootstrap/scss/bootstrap";
+
+$enable-negative-margins: true;
+$base-font-size: 1rem;
+$base-header-purple: #3b3c69;
+$base-spacing-size: 1rem;
+
+@media screen and (max-width: 1200px) {
+  .ccss--padding-right {
+    padding-right: $base-spacing-size !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .ccss--padding-right {
+    padding-right: $base-font-size * 1.5 !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ccss--font-resize-lg {
+    font-size: $base-font-size * 1.75 !important;
+  }
+  .ccss--font-resize-sm {
+    font-size: $base-font-size * 1.25 !important;
+  }
+
+  .ccss--no-padding-md {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .ccss--font-resize-lg {
+    font-size: $base-font-size * 1.5 !important;
+  }
+
+  .ccss--font-resize-sm {
+    font-size: $base-font-size * 0.75 !important;
+  }
+  .ccss--font-resize-xs {
+    font-size: $base-font-size * 0.5 !important;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden !important;
+}
+
+body {
+  padding-top: 80px;
+}
+
+.ccss--header-bg {
+  // background-image: url("/src/resources/background_overlay.png");
+  // background: #252832;
+  background-color: $base-header-purple !important;
+}
+
+.ccss--background {
+  background-image: url("/resources/background_overlay.png");
+  background-size: contain;
+}
+
+.ccss--search-box {
+  background-color: rgba($color: #ffffff, $alpha: 1);
+  border: 0;
+  border-color: $base-header-purple !important;
+}
+
+.ccss--search-box:focus {
+  outline: none;
+}
+
+.ccss--search-box-list {
+  background-color: rgba($color: #e5e5e5, $alpha: 1);
+  border-color: $base-header-purple !important;
+}
+
+.ccss--fade {
+  background-color: linear-gradient(#e6e3fb 10%, #ffffff);
+}
+
+.ccss--fade:hover {
+  transition: 0.5s;
+  background-color: #ffffff;
+}
+
+.ccss--dropdown-button {
+  background-color: rgba($color: $base-header-purple, $alpha: 1);
+  border-color: rgba($color: #b8b8ff, $alpha: 0.5) !important;
+}
+
+.ccss--dropdown-button-icon {
+  filter: invert(1);
+}
+
+.ccss--dropdown-item {
+  background-color: rgba($color: #ffd8be, $alpha: 0.8);
+  border-color: rgba($color: #5a5a77, $alpha: 0.25) !important;
+  // color: #e6e3fb !important;
+  // #e26464 red color,
+}
+
+.hidden {
+  display: none;
+}
