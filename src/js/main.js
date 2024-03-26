@@ -24,8 +24,6 @@ function listContainer(e) {
 
     options[`${containerName}`].push(elem.textContent.trim().toLowerCase());
   });
-
-  console.log(options);
 }
 helpers.searchBoxList.addEventListener("submit", listContainer);
 
@@ -42,24 +40,12 @@ function removeFilter(e) {
 }
 helpers.searchBoxList.addEventListener("click", removeFilter);
 
-//Storing the main query on submit (This can only store one word, modify later)
+//Storing the main query, making the api request and going to the second page (This can only store one word, modify later)
 
 function mainQuery(e) {
-  e.preventDefault();
   const mainInput = document.querySelector(`.js--main-input`);
-  options.query = mainInput.value.trim();
 
-  apiRequest();
+  options.query = mainInput.value.trim();
+  helpers.apiRetrieval();
 }
 helpers.mainInput.addEventListener("submit", mainQuery);
-
-//Making the API request
-async function apiRequest() {
-  const response = await fetch(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
-      helpers.API_key
-    }${helpers.API_query(options)}`
-  );
-  const data = await response.json();
-  console.log(data);
-}

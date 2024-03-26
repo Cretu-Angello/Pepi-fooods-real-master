@@ -7,18 +7,29 @@ const miniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/js/main.js",
-  output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
+  entry: {
+    main: "./src/js/main.js",
+    second: "./src_2/js/second.js",
   },
+
   devServer: {
     static: path.resolve(__dirname, "dist"),
     port: 8080,
     hot: true,
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: "./src/index.html" }),
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+      inject: true,
+      chunks: ["main"],
+      filename: "index.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src_2/second.html",
+      inject: true,
+      chunks: ["second"],
+      filename: "second.html",
+    }),
     new miniCssExtractPlugin(),
   ],
   module: {

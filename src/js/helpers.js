@@ -22,6 +22,25 @@ export const API_query = function (options) {
   }&cuisine=${options.cuisine.join()}&diet=${options.diet.join()}&intolerances=${options.intolerances.join()}&includeIngredients=${options.ingredients.join()}`;
 };
 
+//Making the API request
+export async function apiRequest() {
+  const response = await fetch(
+    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_key}${API_query(
+      filterOptions
+    )}`
+  );
+  const data = await response.json();
+  return data;
+}
+
+//Retrieve API data
+export async function apiRetrieval() {
+  const data = await apiRequest();
+  console.log(data);
+  const dataString = JSON.stringify(data);
+  sessionStorage.setItem("apiData", dataString);
+}
+
 //Filter queries html
 export function addHtml(value, HtmlContainer) {
   const html = `<button
@@ -47,6 +66,5 @@ export function removeBoxes(target) {
   const filterDataIndex = filterOptions[containerName].indexOf(filterData);
 
   filterOptions[`${containerName}`].splice(filterDataIndex, 1);
-  console.log(filterOptions);
   target.remove();
 }
